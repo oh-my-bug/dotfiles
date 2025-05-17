@@ -27,6 +27,12 @@ if ! command -v nvim &>/dev/null; then
   fi
 fi
 
+  config_src_path="$HOME/dotfiles/config/nvim"
+  config_target_path="$HOME/.config/nvim"
+
+  if [[ ! -L "$config_target_path" ]]; then
+    ln -sf "$config_src_path" "$config_target_path"
+  fi
 # check status
 if ! command -v nvim &>/dev/null; then
   echo ">>> ERROR: PATH OVERRIDE FAILED"
